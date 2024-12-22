@@ -1,0 +1,15 @@
+skippedFieldOne:
+  someProp: skip
+data:
+  skippedFieldTwo:
+    someProp: skip
+  properties:
+    - id: propertyOne
+      type: string
+      expressions:
+        - {type: active, expression: "status !== 'NEW'
+        || !['A', 'B', 'C', 'D'].includes(type)
+        || (type === 'A' && sign?.includes('63'))
+        || org !== 'org'"}
+      someSkippedField:
+        type: etc
