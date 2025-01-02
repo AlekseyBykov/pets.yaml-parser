@@ -29,6 +29,8 @@
         <maven.surefire.plugin.version>3.0.0-M5</maven.surefire.plugin.version>
         <surefire.plugin.forkCount>1</surefire.plugin.forkCount>
         <surefire.plugin.reuseForks>true</surefire.plugin.reuseForks>
+
+        <exclude.test.groups>config-tests</exclude.test.groups>
     </properties>
 
     <dependencies>
@@ -56,6 +58,15 @@
         </dependency>
     </dependencies>
 
+    <profiles>
+        <profile>
+            <id>full-tests</id>
+            <properties>
+                <exclude.test.groups/>
+            </properties>
+        </profile>
+    </profiles>
+
     <build>
         <plugins>
             <plugin>
@@ -78,6 +89,7 @@
                     <forkCount>${surefire.plugin.forkCount}</forkCount>
                     <reuseForks>${surefire.plugin.reuseForks}</reuseForks>
                     <argLine>-Dfile.encoding=UTF-8</argLine>
+                    <excludedGroups>${exclude.test.groups}</excludedGroups>
                 </configuration>
             </plugin>
         </plugins>
